@@ -10,10 +10,14 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/calculate_txv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="3"
-        android:background="@color/bg_btnDelete"/>
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_weight="5"
+        android:textSize="28sp"
+        android:paddingStart="@dimen/marginStart_End_style_btn_numbers"
+        android:paddingEnd="@dimen/marginStart_End_style_btn_numbers"
+        android:paddingTop="@dimen/marginStart_End_style_btn_numbers"
+        tools:text="12" />
     <LinearLayout
         style="@style/linear_row_style"
         android:layout_weight="0.5">
@@ -25,8 +29,8 @@
             style="@style/numbers_btn"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/delete_btn"
-            style="@style/numbers_btn"
-            android:textSize="@dimen/delete_btn_text_sizi"
+            style="@style/numbers_btn.dark"
+            android:textSize="@dimen/delete_btn_text_size"
             android:layout_weight="3"
             android:text="@string/delete"/>
 
@@ -48,7 +52,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/division_btn"
             android:text="@string/division"
-            style="@style/numbers_btn" />
+            style="@style/numbers_btn.dark" />
 
     </LinearLayout>
     <LinearLayout style="@style/linear_row_style">
@@ -68,7 +72,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_multiplication"
             android:text="@string/multiplication"
-            style="@style/numbers_btn" />
+            style="@style/numbers_btn.dark" />
     </LinearLayout>
     <LinearLayout style="@style/linear_row_style">
 
@@ -87,7 +91,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_minus"
             android:text="@string/minus"
-            style="@style/numbers_btn" />
+            style="@style/numbers_btn.dark" />
     </LinearLayout>
     <LinearLayout style="@style/linear_row_style">
 
@@ -102,11 +106,11 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_equal"
             android:text="@string/equal"
-            style="@style/numbers_btn" />
+            style="@style/numbers_btn.dark" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_plus"
             android:text="@string/plus"
-            style="@style/numbers_btn" />
+            style="@style/numbers_btn.dark" />
     </LinearLayout>
 
 

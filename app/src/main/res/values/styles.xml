@@ -5,9 +5,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">5dp</item>
-        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginStart">@dimen/marginStart_End_style_btn_numbers</item>
+        <item name="android:layout_marginEnd">@dimen/marginStart_End_style_btn_numbers</item>
         <item name="android:textSize">35dp</item>
+    </style>
+    <style name="numbers_btn.dark">
+        <item name="backgroundTint">@color/bg_btnDelete</item>
     </style>
 
     <style name="linear_row_style">
