@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.example.calculator.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() , View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var binding: ActivityMainBinding
     private var valueEntry = ""
     var valueEntry2 = ""
@@ -26,17 +26,17 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
     }
 
     private fun onclickButtons() {
-        binding.btn0.setOnClickListener (this)
-        binding.btn1.setOnClickListener (this)
-        binding.btn2.setOnClickListener (this)
-        binding.btn3.setOnClickListener (this)
-        binding.btn4.setOnClickListener (this)
-        binding.btn5.setOnClickListener (this)
-        binding.btn6.setOnClickListener (this)
-        binding.btn7.setOnClickListener (this)
-        binding.btn8.setOnClickListener (this)
-        binding.btn9.setOnClickListener (this)
-        binding.btnDot.setOnClickListener (this)
+        binding.btn0.setOnClickListener(this)
+        binding.btn1.setOnClickListener(this)
+        binding.btn2.setOnClickListener(this)
+        binding.btn3.setOnClickListener(this)
+        binding.btn4.setOnClickListener(this)
+        binding.btn5.setOnClickListener(this)
+        binding.btn6.setOnClickListener(this)
+        binding.btn7.setOnClickListener(this)
+        binding.btn8.setOnClickListener(this)
+        binding.btn9.setOnClickListener(this)
+        binding.btnDot.setOnClickListener(this)
         binding.btnEqual.setOnClickListener(this)
         binding.divisionBtn.setOnClickListener(this)
         binding.deleteBtn.setOnClickListener(this)
@@ -44,8 +44,9 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         binding.btnMultiplication.setOnClickListener(this)
         binding.btnMinus.setOnClickListener(this)
     }
+
     override fun onClick(p0: View?) {
-        when (p0){
+        when (p0) {
             binding.btn0 -> {
                 toast("0")
                 entry("0")
@@ -128,7 +129,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             binding.deleteBtn -> {
                 toast("delete")
                 valueEntry = ""
-                binding.calculateTxv.text=""
+                binding.calculateTxv.text = ""
+                binding.answerTxv.text = ""
                 binding.btnDot.isClickable = true
             }
             binding.btnPlus -> {
@@ -154,52 +156,63 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             }
         }
     }
-    private fun toast(message :String){
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+
+    private fun toast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-    private fun entry(entry:String){
+
+    private fun entry(entry: String) {
         valueEntry += entry
         binding.calculateTxv.text = valueEntry
     }
-    private fun entryNumbers(entry:String){
+
+    private fun entryNumbers(entry: String) {
         valueEntry2 += entry
     }
-    private fun clickableOperators(){
+
+    private fun clickableOperators() {
         binding.btnMultiplication.isClickable = true
         binding.btnMinus.isClickable = true
         binding.btnPlus.isClickable = true
         binding.divisionBtn.isClickable = true
     }
-    private fun notClickableOperators(){
+
+    private fun notClickableOperators() {
         binding.btnMultiplication.isClickable = false
         binding.btnMinus.isClickable = false
         binding.btnPlus.isClickable = false
         binding.divisionBtn.isClickable = false
     }
-    private fun equals(){
+
+    private fun equals() {
 
         if (valueEntry2 == "" ||
-            valueEntry2.substring(valueEntry2.lastIndex) == "." ){
+            valueEntry2.substring(valueEntry2.lastIndex) == "."
+        ) {
 
             toast("enter a number! please")
-        }else{
+        } else {
             numberTow = valueEntry2.toDouble()
 
-            if (numberOne == 0.0 ){
-                answer = when(operator){
+            if (numberOne == 0.0) {
+                answer = when (operator) {
                     "+" -> calculator.add(numberTow)
                     "-" -> calculator.subtraction(numberTow)
                     "*" -> calculator.multiplication(numberTow)
                     "/" -> calculator.division(numberTow)
-                    else -> {"error"}
+                    else -> {
+                        "error"
+                    }
                 }
-            }else {
+            } else {
                 answer = when (operator) {
                     "+" -> calculator.add(numberOne, numberTow)
                     "-" -> calculator.subtraction(numberOne, numberTow)
                     "*" -> calculator.multiplication(numberOne, numberTow)
                     "/" -> calculator.division(numberOne, numberTow)
-                    else -> {"error"}
+                    else -> {
+                        "error"
+                    }
                 }
             }
 
@@ -210,14 +223,15 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             numberTow = 0.0
         }
     }
-    private fun clickOperator(operator :String){
-        numberOne = if (valueEntry2 == ""){
+
+    private fun clickOperator(operator: String) {
+        numberOne = if (valueEntry2 == "") {
             0.0
-        }else {
+        } else {
             valueEntry2.toDouble()
         }
         this.operator = operator
-        valueEntry2 =""
+        valueEntry2 = ""
 
     }
 
