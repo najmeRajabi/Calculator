@@ -6,8 +6,16 @@ import android.view.View
 import android.widget.Toast
 import com.example.calculator.databinding.ActivityMainBinding
 
-lateinit var binding: ActivityMainBinding
+
 class MainActivity : AppCompatActivity() , View.OnClickListener {
+    lateinit var binding: ActivityMainBinding
+    private var valueEntry = ""
+    var valueEntry2 = ""
+    private var numberOne = 0.0
+    var numberTow = 0.0
+    private var operator = ""
+    var answer = ""
+    val calculator = Calculator()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -36,32 +44,181 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         binding.btnMultiplication.setOnClickListener(this)
         binding.btnMinus.setOnClickListener(this)
     }
-
-
-
     override fun onClick(p0: View?) {
         when (p0){
-            binding.btn0 -> toast("0")
-            binding.btn1 -> toast("1")
-            binding.btn2 -> toast("2")
-            binding.btn3 -> toast("3")
-            binding.btn4 -> toast("4")
-            binding.btn5 -> toast("5")
-            binding.btn6 -> toast("6")
-            binding.btn7 -> toast("7")
-            binding.btn8 -> toast("8")
-            binding.btn9 -> toast("9")
-            binding.btnDot -> toast(".")
-            binding.btnDot -> toast(".")
-            binding.btnEqual -> toast("=")
-            binding.divisionBtn -> toast("/")
-            binding.deleteBtn -> toast("delete")
-            binding.btnPlus -> toast("+")
-            binding.btnMinus -> toast("-")
-            binding.btnMultiplication -> toast("*")
+            binding.btn0 -> {
+                toast("0")
+                entry("0")
+                entryNumbers("0")
+                clickableOperators()
+            }
+            binding.btn1 -> {
+                toast("1")
+                entry("1")
+                entryNumbers("1")
+                clickableOperators()
+            }
+            binding.btn2 -> {
+                toast("2")
+                entry("2")
+                entryNumbers("2")
+                clickableOperators()
+            }
+            binding.btn3 -> {
+                toast("3")
+                entry("3")
+                entryNumbers("3")
+                clickableOperators()
+            }
+            binding.btn4 -> {
+                toast("4")
+                entry("4")
+                entryNumbers("4")
+                clickableOperators()
+            }
+            binding.btn5 -> {
+                toast("5")
+                entry("5")
+                entryNumbers("5")
+                clickableOperators()
+            }
+            binding.btn6 -> {
+                toast("6")
+                entry("6")
+                entryNumbers("6")
+                clickableOperators()
+            }
+            binding.btn7 -> {
+                toast("7")
+                entry("7")
+                entryNumbers("7")
+                clickableOperators()
+            }
+            binding.btn8 -> {
+                toast("8")
+                entry("8")
+                entryNumbers("8")
+                clickableOperators()
+            }
+            binding.btn9 -> {
+                toast("9")
+                entry("9")
+                entryNumbers("9")
+                clickableOperators()
+            }
+            binding.btnDot -> {
+                toast(".")
+                entry(".")
+                entryNumbers(".")
+                binding.btnDot.isClickable = false
+            }
+            binding.btnEqual -> {
+                toast("=")
+                equals()
+                binding.btnDot.isClickable = true
+
+            }
+            binding.divisionBtn -> {
+                toast("/")
+                clickOperator("/")
+                entry("/")
+                binding.btnDot.isClickable = true
+                notClickableOperators()
+            }
+            binding.deleteBtn -> {
+                toast("delete")
+                valueEntry = ""
+                binding.calculateTxv.text=""
+                binding.btnDot.isClickable = true
+            }
+            binding.btnPlus -> {
+                toast("+")
+                clickOperator("+")
+                entry(" + ")
+                binding.btnDot.isClickable = true
+                notClickableOperators()
+            }
+            binding.btnMinus -> {
+                toast("-")
+                clickOperator("-")
+                entry(" - ")
+                binding.btnDot.isClickable = true
+                notClickableOperators()
+            }
+            binding.btnMultiplication -> {
+                toast("*")
+                clickOperator("*")
+                entry(" * ")
+                binding.btnDot.isClickable = true
+                notClickableOperators()
+            }
         }
     }
     private fun toast(message :String){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
+    private fun entry(entry:String){
+        valueEntry += entry
+        binding.calculateTxv.text = valueEntry
+    }
+    private fun entryNumbers(entry:String){
+        valueEntry2 += entry
+    }
+    private fun clickableOperators(){
+        binding.btnMultiplication.isClickable = true
+        binding.btnMinus.isClickable = true
+        binding.btnPlus.isClickable = true
+        binding.divisionBtn.isClickable = true
+    }
+    private fun notClickableOperators(){
+        binding.btnMultiplication.isClickable = false
+        binding.btnMinus.isClickable = false
+        binding.btnPlus.isClickable = false
+        binding.divisionBtn.isClickable = false
+    }
+    private fun equals(){
+
+        if (valueEntry2 == "" ||
+            valueEntry2.substring(valueEntry2.lastIndex) == "." ){
+
+            toast("enter a number! please")
+        }else{
+            numberTow = valueEntry2.toDouble()
+
+            if (numberOne == 0.0 ){
+                answer = when(operator){
+                    "+" -> calculator.add(numberTow)
+                    "-" -> calculator.subtraction(numberTow)
+                    "*" -> calculator.multiplication(numberTow)
+                    "/" -> calculator.division(numberTow)
+                    else -> {"error"}
+                }
+            }else {
+                answer = when (operator) {
+                    "+" -> calculator.add(numberOne, numberTow)
+                    "-" -> calculator.subtraction(numberOne, numberTow)
+                    "*" -> calculator.multiplication(numberOne, numberTow)
+                    "/" -> calculator.division(numberOne, numberTow)
+                    else -> {"error"}
+                }
+            }
+
+            valueEntry = ""
+            valueEntry2 = ""
+            binding.answerTxv.text = answer
+            numberOne = 0.0
+            numberTow = 0.0
+        }
+    }
+    private fun clickOperator(operator :String){
+        numberOne = if (valueEntry2 == ""){
+            0.0
+        }else {
+            valueEntry2.toDouble()
+        }
+        this.operator = operator
+        valueEntry2 =""
+
+    }
+
 }

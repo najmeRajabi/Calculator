@@ -55,7 +55,5 @@ class Calculator(private var memory :Double = 0.0){
         }
         return result.toString()
     }
-    fun setMemory(Memory:Double){
-        memory = Memory
-    }
+
 }

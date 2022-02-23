@@ -24,7 +24,6 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/answer_txv"
-            android:background="@color/bg_btnDelete"
             android:layout_marginVertical="5dp"
             style="@style/numbers_btn"/>
         <com.google.android.material.button.MaterialButton
