@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.calculator.databinding.ActivityMainBinding
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -200,9 +201,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     "-" -> calculator.subtraction(numberTow)
                     "*" -> calculator.multiplication(numberTow)
                     "/" -> calculator.division(numberTow)
-                    else -> {
-                        "error"
-                    }
+                    else -> numberTow.toString()
                 }
             } else {
                 answer = when (operator) {
@@ -211,16 +210,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     "*" -> calculator.multiplication(numberOne, numberTow)
                     "/" -> calculator.division(numberOne, numberTow)
                     else -> {
-                        "error"
+                        numberTow.toString()
                     }
                 }
             }
+
 
             valueEntry = ""
             valueEntry2 = ""
             binding.answerTxv.text = answer
             numberOne = 0.0
             numberTow = 0.0
+            try {
+                calculator.memory = answer.toDouble()
+            }catch (e:Exception){}
         }
     }
 

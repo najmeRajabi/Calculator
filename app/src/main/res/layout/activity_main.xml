@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/purple_700"
     tools:context=".MainActivity">
 
     <com.google.android.material.textview.MaterialTextView
@@ -14,6 +15,7 @@
         android:gravity="center_vertical"
         android:layout_weight="5"
         android:textSize="28sp"
+        android:textColor="@color/design_default_color_on_primary"
         android:paddingStart="@dimen/marginStart_End_style_btn_numbers"
         android:paddingEnd="@dimen/marginStart_End_style_btn_numbers"
         android:paddingTop="@dimen/marginStart_End_style_btn_numbers"
@@ -24,7 +26,11 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/answer_txv"
-            android:layout_marginVertical="5dp"
+            android:background="@color/bg_btnDelete"
+            android:textColor="@color/design_default_color_on_primary"
+            android:paddingStart="@dimen/marginStart_End_style_btn_numbers"
+            android:paddingEnd="@dimen/marginStart_End_style_btn_numbers"
+            android:layout_marginVertical="@dimen/marginStart_End_style_btn_numbers"
             style="@style/numbers_btn"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/delete_btn"

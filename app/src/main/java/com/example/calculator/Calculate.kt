@@ -1,6 +1,6 @@
 package com.example.calculator
 
-class Calculator(private var memory :Double = 0.0){
+class Calculator(var memory :Double = 0.0){
 
 
     fun add(input1:Double , input2:Double):String{
